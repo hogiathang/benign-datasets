@@ -1,0 +1,9 @@
+version = [
+    '"Chromium";v="100", "Google Chrome";v="100"',
+    '"(Not(A:Brand";v="8", "Chromium";v="98"',
+    '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"',
+    '"Not_A Brand";v="8", "Google Chrome";v="109", "Chromium";v="109"',
+    '"Not_A Brand";v="99", "Google Chrome";v="86", "Chromium";v="86"',
+    '"Not_A Brand";v="99", "Google Chrome";v="96", "Chromium";v="96"',
+    '"Not A;Brand";v="99", "Chromium";v="96", "Microsoft Edge";v="96"'
+ ]

@@ -1,0 +1,6 @@
+__awaiter(this, void 0, void 0, function* () {
+            if (!this.id) {
+                return;
+            }
+            yield this._subscriptionManager.removeSubscription(this);
+        })

@@ -1,0 +1,4 @@
+__awaiter(this, void 0, void 0, function* () {
+            yield this.unsubscribe();
+            yield this.subscribe();
+        })

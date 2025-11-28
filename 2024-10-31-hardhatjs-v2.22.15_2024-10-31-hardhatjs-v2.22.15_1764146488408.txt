@@ -1,0 +1,22 @@
+function encodeStackTraceEntry = function encodeStackTraceEntry(
+  stackTraceEntry: SolidityStackTraceEntry
+): SolidityCallSite {
+  switch (stackTraceEntry.type) {
+    case StackTraceEntryType.UNRECOGNIZED_FUNCTION_WITHOUT_FALLBACK_ERROR:
+    case StackTraceEntryType.MISSING_FALLBACK_OR_RECEIVE_ERROR:
+      return sourceReferenceToSolidityCallsite({
+        ...stackTraceEntry.sourceReference,
+        function: UNRECOGNIZED_FUNCTION_NAME,
+      });
+
+    case StackTraceEntryType.CALLSTACK_ENTRY:
+    case StackTraceEntryType.REVERT_ERROR:
+    case StackTraceEntryType.CUSTOM_ERROR:
+    case StackTraceEntryType.FUNCTION_NOT_PAYABLE_ERROR:
+    case StackTraceEntryType.INVALID_PARAMS_ERROR:
+    case StackTraceEntryType.FALLBACK_NOT_PAYABLE_ERROR:
+    case StackTraceEntryType.FALLBACK_NOT_PAYABLE_AND_NO_RECEIVE_ERROR:
+    case StackTraceEntryType.RETURNDATA_SIZE_ERROR:
+    case StackTraceEntryType.NONCONTRACT_ACCOUNT_CALLED_ERROR:
+    case StackTraceEntryType.CALL_FAILED_ERROR:
+    case StackTraceEntryType.DIRECT_LIBRARY_C...

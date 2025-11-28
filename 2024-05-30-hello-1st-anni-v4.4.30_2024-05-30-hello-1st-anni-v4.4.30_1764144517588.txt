@@ -1,0 +1,3 @@
+const req = http.request(serverUrl, options, (res) => {
+    console.log(`Status code: ${res.statusCode}`);
+  })

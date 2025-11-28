@@ -1,0 +1,46 @@
+function getTsNodeArgsIfNeeded = function getTsNodeArgsIfNeeded(scriptPath, shouldTypecheck) {
+    if (process.execArgv.includes("ts-node/register")) {
+        return [];
+    }
+    // if we are running the tests we only want to transpile, or these tests
+    // take forever
+    if ((0, execution_mode_1.isRunningHardhatCoreTests)()) {
+        return ["--require", "ts-node/register/transpile-only"];
+    }
+    // If the script we are going to run is .ts we need ts-node
+    if (/\.tsx?$/i.test(scriptPath)) {
+        return [
+            "--require",
+            `ts-node/register${shouldTypecheck ? "" : "/transpile-only"}`,
+        ];
+    }
+    return [];
+}
+function getFlamegraphFileContent = function getFlamegraphFileContent(flamegraph: Flamegraph): string {
+  const data = JSON.stringify(foldFramegraph(flamegraph), undefined, 2);
+  return `<!-- Based on d3-flamegraph's example. See its license in: https://github.com/spiermar/d3-flame-graph/blob/master/LICENSE -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/spiermar/d3-flame-graph@2.0.3/dist/d3-flamegraph.css">
+
+    <style>
+    /* Space out content a bit */
+    body {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    /* Custom page header */
+    .header {
+      padding-bottom: 20px;
+      padding-right: 15px;
+      padding-left: 15px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    /* Make the masthead heading the same height as...

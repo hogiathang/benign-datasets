@@ -1,0 +1,1 @@
+throw new web3_errors_1.InvalidUnitError(unit);

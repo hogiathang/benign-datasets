@@ -1,0 +1,28 @@
+const ERRORS = {
+  GENERAL: {
+    NOT_INSIDE_PROJECT: {
+      number: 1,
+      message: "You are not inside a Hardhat project.",
+      title: "You are not inside a Hardhat project",
+      description: `You are trying to run Hardhat outside of a Hardhat project.
+
+You can learn how to use Hardhat by reading the [Getting Started guide](/hardhat-runner/docs/getting-started).`,
+      shouldBeReported: false,
+    },
+    INVALID_NODE_VERSION: {
+      number: 2,
+      message:
+        "Hardhat doesn't support your Node.js version. It should be %requirement%.",
+      title: "Unsupported Node.js",
+      description: `Hardhat doesn't support your Node.js version.
+
+Please upgrade your version of Node.js and try again.`,
+      shouldBeReported: false,
+    },
+    UNSUPPORTED_OPERATION: {
+      number: 3,
+      message: "%operation% is not supported in Hardhat.",
+      title: "Unsupported operation",
+      description: `You are trying to perform an unsupported operation.
+
+Unless you are creating a task ...
